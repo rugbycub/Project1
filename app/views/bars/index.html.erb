@@ -1,0 +1,39 @@
+<h1>Listing bars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bars.each do |bar| %>
+      <tr>
+        <td><%= bar.name %></td>
+        <td><%= bar.address %></td>
+        <td><%= bar.city %></td>
+        <td><%= bar.state %></td>
+        <td><%= bar.zip %></td>
+        <td><%= bar.lat %></td>
+        <td><%= bar.long %></td>
+        <td><%= link_to 'Show', bar %></td>
+        <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
+        <td><%= link_to 'Destroy', bar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bar', new_bar_path %>
