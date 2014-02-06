@@ -8,44 +8,97 @@
             </div>
         </div>
         <div class="row">
-        <%= form_for(@payment) do |f| %>
-  <% if @payment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+            <div class="col-lg-12">
+                <button type="button" id="populate" class="btn btn-default pull-right" style="margin-bottom: 20px;">Populate Test Data</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tokenize Credit Card</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Name on Card</label>
+                                <div class="col-lg-5">
+                                    <input type="text" id="cc-name" class="form-control" autocomplete="off" placeholder="John Doe" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Card Number</label>
+                                <div class="col-lg-5">
+                                    <input type="text" id="cc-number" class="form-control" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Expiration</label>
+                                <div class="col-lg-2">
+                                    <input type="text" id="cc-ex-month" class="form-control" autocomplete="off" placeholder="01" maxlength="2" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" id="cc-ex-year" class="form-control" autocomplete="off" placeholder="2013" maxlength="4" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Security Code (CSC)</label>
+                                <div class="col-lg-2">
+                                    <input type="text" id="ex-csc" class="form-control" autocomplete="off" placeholder="453" maxlength="4" />
+                                </div>
+                            </div>
+                            <a id="cc-submit" class="btn btn-large btn-primary pull-right">Tokenize</a>
 
-      <ul>
-      <% @payment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tokenize Bank Account</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Account Holder's Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" id="ba-name" class="form-control" autocomplete="off" placeholder="John Doe" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Routing Number</label>
+                                <div class="col-lg-6">
+                                    <input type="text" id="ba-routing" class="form-control" autocomplete="off" placeholder="322271627" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-5 control-label">Account Number</label>
+                                <div class="col-lg-6">
+                                    <input type="text" id="ba-number" class="form-control" autocomplete="off" placeholder="8887776665555" />
+                                </div>
+                            </div>
+                            <a id="ba-submit" class="btn btn-large btn-primary pull-right">Tokenize</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="response" class="col-lg-12" style="display: none;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Response</h3>
+                    </div>
+                    <div class="panel-body">
+                        <pre></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name_on_card %><br>
-    <%= f.text_field :name_on_card %>
-  </div>
-  <div class="field">
-    <%= f.label :card_number %><br>
-    <%= f.text_field :card_number %>
-  </div>
-  <div class="field">
-    <%= f.label :expiration_month %><br>
-    <%= f.text_field :expiration_month %>
-  </div>
-    <div class="field">
-    <%= f.label :expiration_year %><br>
-    <%= f.text_field :expiration_year %>
-  </div>
-  <div class="field">
-    <%= f.label :security_code %><br>
-    <%= f.text_field :security_code %>
-  </div>
-    <div class="field">
-    <%= f.label :postal_code %><br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
+  </body>

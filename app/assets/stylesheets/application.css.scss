@@ -12,6 +12,26 @@
  *= require_tree .
  */
 
- body { 
-    padding-top: 110px; 
+ @media (max-width: 1200px) {
+	body {
+		padding-top:150px;
+	}
+}
+
+@media (min-width: 978px) {
+    body {
+     padding-top:150px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+     padding-top:200px;
+    }
+}
+
+@media (max-width: 300px) {
+    body {
+     padding-top:250px;
+    }
 }
