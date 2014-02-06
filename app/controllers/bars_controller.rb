@@ -1,4 +1,5 @@
 class BarsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bar, only: [:show, :edit, :update, :destroy]
 
   # GET /bars

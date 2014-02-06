@@ -46,3 +46,14 @@ end
 
 gem 'rails_12factor'
 gem 'thin'
+gem 'devise'
+gem 'cancan'
+gem 'rolify'
+gem 'simple_form'
+gem 'bootstrap-sass'
+gem 'balanced'
+
+group :development do
+	gem 'better_errors'
+	gem 'rails_layout'	
+end
