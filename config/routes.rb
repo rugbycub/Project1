@@ -15,6 +15,7 @@ Barcard::Application.routes.draw do
   resources :dashboard
 
   devise_for :users
+
   get "pages/index"
   get "pages/how_it_works"
   get "pages/get_rewarded"

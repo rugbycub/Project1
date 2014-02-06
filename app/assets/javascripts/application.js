@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+var csrf = '<%= "#{ENV['BALANCED_CSRF']}" %>'
+var marketplaceUri = '<%= "#{ENV['BALANCED_MARKETPLACE_URI']}" %>'
+//  kick everything off when jquery is ready
+$(function () {
+    barcard.init({
+        csrfToken:csrf,
+        marketplaceUri:marketplaceUri
+    });
+});
+
+

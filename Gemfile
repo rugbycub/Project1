@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+
+gem 'dotenv-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -43,7 +46,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'protected_attributes'
 gem 'rails_12factor', group: :production
 gem 'thin'
 gem 'devise'
@@ -56,4 +59,5 @@ gem 'balanced'
 group :development do
 	gem 'better_errors'
 	gem 'rails_layout'	
+	gem 'binding_of_caller'
 end

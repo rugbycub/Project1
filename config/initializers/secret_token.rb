@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Barcard::Application.config.secret_key_base = '328839ec59808f0e3e74b52c2ddb2bac3cb3e122fc1d207d307cc7e6e6257d022ea0cca4315eddeec64bd89af3e4e0f561637c17ce1e813390c9be680972a27f'
+Barcard::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
