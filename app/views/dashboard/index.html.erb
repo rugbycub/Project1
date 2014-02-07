@@ -1,1 +1,3 @@
 Welcome to your dashboard <%= current_user.first_name %> <%= current_user.last_name %>!
+<% account = Account.find_by(user_id: current_user.id) %>
+Your Account balance is <%= account.balance %>

@@ -1,4 +1,6 @@
 Barcard::Application.routes.draw do
+  resources :load_funds
+
   get "users/index"
   get "users/account"
   get "users/payments"
@@ -10,7 +12,12 @@ Barcard::Application.routes.draw do
 
   resources :check_ins
 
-  resources :payments
+  resources :payments do
+      member do
+        post :store_credit_card
+      end
+    end
+
 
   resources :dashboard
 

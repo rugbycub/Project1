@@ -25,17 +25,8 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    create_balanced_payment
 
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @payment }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /payments/1
@@ -72,4 +63,16 @@ class PaymentsController < ApplicationController
     def payment_params
       params.require(:payment).permit(:payment_aci, :card_last_four, :card_type, :user_id)
     end
+
+    def add_payment_method
+  customer = Balanced::Customer.find(current_user.account_uri)
+  customer.add_bank_account(params['customer_uri'])
+  
+  if customer.save
+    bank_account = Balanced::BankAccount.find(params['customer_uri'])
+    render json: bank_account
+  else
+    render json: {error: "Payment account could not be configured properly"}, status: 401
+  end  
+end
 end
