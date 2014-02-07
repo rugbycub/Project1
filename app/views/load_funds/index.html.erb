@@ -1,0 +1,25 @@
+<h1>Listing load_funds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_funds.each do |load_fund| %>
+      <tr>
+        <td><%= link_to 'Show', load_fund %></td>
+        <td><%= link_to 'Edit', edit_load_fund_path(load_fund) %></td>
+        <td><%= link_to 'Destroy', load_fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load fund', new_load_fund_path %>
