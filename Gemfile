@@ -56,8 +56,8 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'balanced'
 
-group :development do
+
 	gem 'better_errors'
 	gem 'rails_layout'	
 	gem 'binding_of_caller'
-end
+
