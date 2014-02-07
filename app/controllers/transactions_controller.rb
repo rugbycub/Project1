@@ -73,3 +73,5 @@ class TransactionsController < ApplicationController
       params.require(:transaction).permit(:user_id, :bar_id, :amount, :type)
     end
 end
+
+

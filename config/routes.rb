@@ -12,12 +12,9 @@ Barcard::Application.routes.draw do
 
   resources :check_ins
 
-  resources :payments do
-      member do
-        post :store_credit_card
-      end
-    end
+  resources :payments
 
+  post "/payments/store_credit_card", to: "payments#add_payment_method"
 
   resources :dashboard
 

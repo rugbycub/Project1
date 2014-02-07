@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  include PaymentsHelper
 
   # GET /payments
   # GET /payments.json
@@ -26,7 +27,6 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     create_balanced_payment
-
   end
 
   # PATCH/PUT /payments/1
@@ -53,26 +53,16 @@ class PaymentsController < ApplicationController
     end
   end
 
+
+  def add_payment_method
+    add_payment
+  end
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def payment_params
-      params.require(:payment).permit(:payment_aci, :card_last_four, :card_type, :user_id)
-    end
 
-    def add_payment_method
-  customer = Balanced::Customer.find(current_user.account_uri)
-  customer.add_bank_account(params['customer_uri'])
-  
-  if customer.save
-    bank_account = Balanced::BankAccount.find(params['customer_uri'])
-    render json: bank_account
-  else
-    render json: {error: "Payment account could not be configured properly"}, status: 401
-  end  
+  # Never trust parameters from the scary internet, only allow the white list through.
+
+
 end
-end
+
