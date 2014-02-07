@@ -56,6 +56,7 @@ class PaymentsController < ApplicationController
 
   def add_payment_method
     add_payment
+    redirect_to :controller => 'dashboard', :action => 'index'
   end
   private
   # Use callbacks to share common setup or constraints between actions.
