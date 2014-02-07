@@ -10,6 +10,10 @@ def add_payment
     uri = current_user.customer_uri
     customer = Balanced::Customer.find(uri)
     response = customer.add_card(@card.uri)
+    new_payment = Payment.new(payment_aci: response.source_uri, card_last_four: @card.last_four, card_type: @card.brand)
+    new_payment.user = current_user
+    new_payment.save
+
   end
 
 end
